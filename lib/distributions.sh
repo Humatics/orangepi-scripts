@@ -436,6 +436,8 @@ EOF
 nameserver 8.8.8.8
 EOF
 
+	sed -i '/APT::Periodic::/ s/"1"/"0"/' "$DEST/etc/apt/apt.conf.d/20auto-upgrades"
+
 	do_conffile
 	add_ssh_keygen_service
 	add_opi_python_gpio_libs
