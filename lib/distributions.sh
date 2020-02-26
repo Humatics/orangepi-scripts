@@ -419,11 +419,11 @@ server_setup()
 #EOF
 
 	cat > "$DEST/etc/hostname" <<EOF
-orangepi$BOARD
+${ORANGEPI_HOSTNAME-orangepi${BOARD}}
 EOF
 	cat > "$DEST/etc/hosts" <<EOF
 127.0.0.1 localhost
-127.0.1.1 orangepi$BOARD
+127.0.1.1 ${ORANGEPI_HOSTNAME-orangepi${BOARD}}
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
