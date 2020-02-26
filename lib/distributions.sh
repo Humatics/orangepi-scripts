@@ -310,7 +310,7 @@ prepare_env()
 prepare_rootfs_server()
 {
 
-	DEBUSER="orangepi"
+	DEBUSER=${DEBUSER-orangepi}
 
 	rm "$DEST/etc/resolv.conf"
 	cp /etc/resolv.conf "$DEST/etc/resolv.conf"
@@ -344,9 +344,9 @@ apt-get -y remove --purge ureadahead
 apt-get -y update
 adduser --gecos $DEBUSER --disabled-login $DEBUSER --uid 1000
 adduser --gecos root --disabled-login root --uid 0
-echo root:orangepi | chpasswd
+echo root:{ROOT_PASSWORD-orangepi} | chpasswd
 chown -R 1000:1000 /home/$DEBUSER
-echo "$DEBUSER:$DEBUSER" | chpasswd
+echo "$DEBUSER:${DEBPASSWORD-${DEBUSER}}" | chpasswd
 usermod -a -G sudo $DEBUSER
 usermod -a -G adm $DEBUSER
 usermod -a -G video $DEBUSER
