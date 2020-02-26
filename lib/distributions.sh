@@ -519,4 +519,8 @@ build_rootfs()
 		fi
 		server_setup
 	fi
+
+	if type do_rootfs_postinstall &> /dev/null; then
+		do_rootfs_postinstall $DEST;
+	fi;
 }
