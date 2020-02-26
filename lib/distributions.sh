@@ -155,7 +155,7 @@ EOF
 }
 
 add_opi_config_libs() {
-	do_chroot apt-get install -y dialog expect bc cpufrequtils figlet toilet
+	do_chroot apt-get install -y dialog expect bc cpufrequtils
         cp $EXTER/common/opi_config_libs $DEST/usr/local/sbin/ -rfa
         cp $EXTER/common/opi_config_libs/opi-config $DEST/usr/local/sbin/ -rfa
 
@@ -336,7 +336,8 @@ export DEBIAN_FRONTEND=noninteractive
 locale-gen en_US.UTF-8
 
 apt-get -y update
-apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq apt-transport-https man subversion imagemagick libv4l-dev cmake bluez $EXTRADEBS
+apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev apt-transport-https man cmake bluez $EXTRADEBS
+
 
 apt-get install -f
 apt-get -y remove --purge ureadahead
