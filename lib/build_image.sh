@@ -3,6 +3,9 @@
 build_image()
 {	
 	VER="v2.0.4"
+	if -n "${BUILD_NUMBER}"; then
+		VER="${VER}_${BUILD_NUMBER}";
+	fi;
 	IMAGENAME="OrangePi_${BOARD}_${OS}_${DISTRO}_${IMAGETYPE}_${KERNEL_NAME}_${VER}"
 	IMAGE="${BUILD}/images/$IMAGENAME.img"
 
